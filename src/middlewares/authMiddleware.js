@@ -39,5 +39,8 @@ function checkRole(roles) {
     });
   }
 }
+router.get('/admin/dashboard', authMiddleware, checkRole(['admin']), (req, res) => {
+  res.json({ message: 'Bienvenido, admin' });
+});
 
 module.exports = checkRole

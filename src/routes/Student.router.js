@@ -45,4 +45,13 @@ studentRouter.delete('/:id', (req, res)=>{
     .catch((err) => res.send('error'))
 });
 
+router.get('/', async (req, res) => {
+    try {
+      const students = await Student.find();
+      res.json(students);
+    } catch (err) {
+      res.status(500).json({ error: 'Error al obtener estudiantes' });
+    }
+  });
+
 export default studentRouter
