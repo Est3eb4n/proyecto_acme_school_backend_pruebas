@@ -1,9 +1,9 @@
 import InscriptionDTO from "../dto/Inscription.dto.js";
-import mongoose from "mongoose";
+import mongoose, { Types } from "mongoose";
 
 const inscriptionSchema = new mongoose.Schema({
-    studentId: ObjectId,
-    courseId: ObjectId,
+    studentId: Types.ObjectId,
+    courseId: Types.ObjectId,
     registrationDate: Date,
 });
 

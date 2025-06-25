@@ -3,14 +3,14 @@ import { body,validationResult } from 'express-validator';
 import CourseController from '../controllers/Course_controller.js'
 
 const courseRouter = express.Router();
-const courseContoller = CourseController();
+const courseContoller = new CourseController();
 
 const validations=[
-    body.exists('name').isString().isLength({ min:20 }).withMessage('El nombre del curso debe tener minimo 20 caracters'),
-    body.exists('description').isString({ min:250 }).isLength().withMessage('La descripccion debe contar con minimo 250 caracteres'),
-    body.exists('details').isString().isLength({ min:250 }).withMessage('Los detalles del curso deben tener minimo 250 carateres'),
-    body.exists('datarange').isDate().withMessage(),
-    body.exists('active').isBoolean().withMessage(),
+    body('name').exists().isString().isLength({ min:20 }).withMessage('El nombre del curso debe tener minimo 20 caracters'),
+    body('description').exists().isString({ min:250 }).isLength().withMessage('La descripccion debe contar con minimo 250 caracteres'),
+    body('details').exists().isString().isLength({ min:250 }).withMessage('Los detalles del curso deben tener minimo 250 carateres'),
+    body('datarange').exists().isDate().withMessage(),
+    body('active').exists().isBoolean().withMessage(),
 ]
 
 courseRouter.post('/', validations,(req, res)=>{

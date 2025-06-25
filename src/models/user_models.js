@@ -5,6 +5,18 @@ const userSchema = new mongoose.Schema({
     username: String,
     email: String,
     googleId: String,
+    role:{
+        type: String,
+        enum:['admin','teacher', 'student'],
+    },
+    studentDetails: {
+        grade: String,
+        courses:[{ type: Schema.Types.ObjectId, ref:'Course'}]
+    },
+    teacherDetails:{
+        department: String,
+        assignedCourses: [{type: Schema.Types.ObjectId, ref:'Course'}]
+    }
 });
 
 const user = mongoose.model('User', userSchema);

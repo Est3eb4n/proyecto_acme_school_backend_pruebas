@@ -6,8 +6,8 @@ const inscriptionRouter = express.Router();
 const inscriptionController = new InscriptionController();
 
 const validations = [
-    body().exists().isObjectID(),
-    body().exists().isObjectID(),
+    body().exists().isMongoId(),
+    body().exists().isMongoId(),
     body().exists().isDate()
 ]
 
