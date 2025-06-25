@@ -1,13 +1,14 @@
 import express from 'express';
 import { body,validationResult } from 'express-validator';
-import InscriptionController from '../controllers/inscription_contoller.js'
+import InscriptionController from '../controllers/inscription_contoller.js' 
 
+const inscriptionRouter = express.Router();
 const inscriptionController = new InscriptionController();
 
 const validations = [
-    body().exsists().isOnjectID(),
-    body().exsists().isOnjectID(),
-    body().exsists().isDate()
+    body().exists().isObjectID(),
+    body().exists().isObjectID(),
+    body().exists().isDate()
 ]
 
 inscriptionRouter.post('/', validations,(req, res)=>{
@@ -16,7 +17,7 @@ inscriptionRouter.post('/', validations,(req, res)=>{
         return res.status(400).json({error:error.array()})
     }
 
-    inscriptionController.create(req,res)
+    inscriptionController.create(req,res);
 });
 
 inscriptionRouter.get('/', (req,res) =>{

@@ -1,15 +1,16 @@
 import express from 'express';
 import { body,validationResult } from 'express-validator';
-import ClassroomController from '../controllers/Classroom_controller.js';
+import ClassroomController from '../controllers/Classroom_controller.js'
 
+const classroomRouter = express.Router();
 const classroomController = new ClassroomController();
 
 const validations=[
-    body('name').exists().isString().inLength({ min:20 }).withMenssage('El nombre del aula debe tener minimo 20 caracters'),
-    body('descripition').exists().isString({ min:250 }).inLength().withMenssage('La descripccion debe contar con minimo 250 caracteres'),
-    body('details').exists().isString().inLength({ min:250 }).withMenssage('Los detalles del curso deben tener minimo 250 carateres'),
-    body('dataRange').exists().isDate().inLength(),
-    body('active').exists().isBoolean().inLength()
+    body('name').exists().isString().isLength({ min:20 }).withMessage('El nombre del aula debe tener minimo 20 caracters'),
+    body('descripition').exists().isString({ min:250 }).isLength().withMessage('La descripccion debe contar con minimo 250 caracteres'),
+    body('details').exists().isString().isLength({ min:250 }).withMessage('Los detalles del curso deben tener minimo 250 carateres'),
+    body('dataRange').exists().isDate().isLength(),
+    body('active').exists().isBoolean().isLength()
 ]
 
 classroomRouter.post('/', validations,(req, res)=>{

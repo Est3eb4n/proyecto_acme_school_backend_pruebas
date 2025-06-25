@@ -2,14 +2,15 @@ import express from 'express';
 import { body,validationResult } from 'express-validator';
 import TeacherController from '../controllers/Teacher_controller.js'
 
+const teacherRouter = express.Router();
 const teacherController = new TeacherController();
 
 const validations =[
-    body('firstname').exists().isString().isLength({ min: 4 }).withMenssage('El nombre ingresado debe tener minimo 4 caracteres'),
-    body('lastname').exists().isString().isLength({ min: 20 }).withMenssage('El apellido ingresado debe tener minimo 4 caracteres'),
-    body('typeidentification').exists().isString().isLength({ min: 10 }).withMenssage('El tipo de identificacion es obligatorio y debe tener minimo 10 caracteres'),
-    body('numberidentification').exists().isString().isLength({ min: 10 }).withMenssage('El numero de identificacion es obligatorio y debe tener minimo 10 caracteres'),
-    body('email').exists().isEmail().withMenssage('Ingrese un Email valido'),
+    body('firstname').exists().isString().isLength({ min: 4 }).withMessage('El nombre ingresado debe tener minimo 4 caracteres'),
+    body('lastname').exists().isString().isLength({ min: 20 }).withMessage('El apellido ingresado debe tener minimo 4 caracteres'),
+    body('typeidentification').exists().isString().isLength({ min: 10 }).withMessage('El tipo de identificacion es obligatorio y debe tener minimo 10 caracteres'),
+    body('numberidentification').exists().isString().isLength({ min: 10 }).withMessage('El numero de identificacion es obligatorio y debe tener minimo 10 caracteres'),
+    body('email').exists().isEmail().withMessage('Ingrese un Email valido'),
 ]
 
 

@@ -1,4 +1,4 @@
-import User from "../models/user_models.js";
+import User  from "../models/user_models.js";
 import { ObjectId } from "mongodb";
 
 export default class UserController{
